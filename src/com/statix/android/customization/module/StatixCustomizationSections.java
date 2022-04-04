@@ -22,6 +22,7 @@ import com.android.wallpaper.model.WorkspaceViewModel;
 import com.android.wallpaper.module.CustomizationSections;
 
 import com.statix.android.customization.model.color.ColorSectionController;
+import com.statix.android.customization.model.color.MonetColorSectionController;
 import com.statix.android.customization.model.iconpack.IconPackManager;
 import com.statix.android.customization.model.iconpack.IconPackSectionController;
 
@@ -50,6 +51,9 @@ public final class StatixCustomizationSections implements CustomizationSections 
         sectionControllers.add(
             new ColorSectionController(activity, wallpaperColorsViewModel, lifecycleOwner,
                 savedInstanceState, sectionNavigationController));
+
+        // Monet colors
+        sectionControllers.add(new MonetColorSectionController(sectionNavigationController));
 
         // Dark/Light theme section.
         sectionControllers.add(new DarkModeSectionController(activity,
