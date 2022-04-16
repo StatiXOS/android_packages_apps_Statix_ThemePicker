@@ -54,6 +54,7 @@ android_app {
 
     static_libs: [
         "colorkt",
+        "monet",
         "themelib",
         "wallpaper-common-deps",
         "SettingsLibSettingsTheme",
@@ -90,6 +91,7 @@ android_app {
     required: [
         "privapp_whitelist_com.android.wallpaper",
         "default_permissions_com.android.wallpaper",
+        "StatixColorStub",
     ],
 }
 
