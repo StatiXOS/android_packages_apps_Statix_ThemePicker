@@ -21,6 +21,7 @@ import com.android.wallpaper.model.WallpaperSectionController;
 import com.android.wallpaper.model.WorkspaceViewModel;
 import com.android.wallpaper.module.CustomizationSections;
 
+import com.statix.android.customization.model.color.ColorSectionController;
 import com.statix.android.customization.model.iconpack.IconPackManager;
 import com.statix.android.customization.model.iconpack.IconPackSectionController;
 
@@ -44,6 +45,11 @@ public final class StatixCustomizationSections implements CustomizationSections 
                 activity, lifecycleOwner, permissionRequester, wallpaperColorsViewModel,
                 workspaceViewModel, sectionNavigationController, wallpaperPreviewNavigator,
                 savedInstanceState));
+
+        // Color section
+        sectionControllers.add(
+            new ColorSectionController(activity, wallpaperColorsViewModel, lifecycleOwner,
+                savedInstanceState, sectionNavigationController));
 
         // Dark/Light theme section.
         sectionControllers.add(new DarkModeSectionController(activity,
