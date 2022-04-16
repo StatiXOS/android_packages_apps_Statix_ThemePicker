@@ -46,6 +46,31 @@ genrule {
         + "$(location soong_zip) -o $(out) -C $$RES_DIR -D $$RES_DIR"
 }
 
+android_library {
+    name: "StatixThemePicker-core",
+
+    static_libs: [
+        "colorkt",
+        "monet",
+        "themelib",
+        "wallpaper-common-deps",
+        "SettingsLibSettingsTheme",
+        "SystemUIFlagsLib",
+        "SystemUI-statsd",
+        "styleprotoslite",
+    ],
+
+    optimize: {
+        enabled: false,
+    },
+
+    resource_dirs: ["res"],
+
+    resource_zips: [":WallpaperPicker2_res", ":ThemePicker_res"],
+
+    kotlincflags: ["-Xjvm-default=enable"],
+}
+
 //
 // Build app code.
 //
@@ -53,13 +78,7 @@ android_app {
     name: "StatixThemePicker",
 
     static_libs: [
-        "colorkt",
-        "themelib",
-        "wallpaper-common-deps",
-        "SettingsLibSettingsTheme",
-        "SystemUIFlagsLib",
-        "SystemUI-statsd",
-        "styleprotoslite",
+        "StatixThemePicker-core",
     ],
 
     srcs: [
@@ -91,6 +110,7 @@ android_app {
     required: [
         "privapp_whitelist_com.android.wallpaper",
         "default_permissions_com.android.wallpaper",
+        "StatixColorStub",
     ],
 }
 
