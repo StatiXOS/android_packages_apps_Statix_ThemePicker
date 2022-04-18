@@ -46,11 +46,8 @@ genrule {
         + "$(location soong_zip) -o $(out) -C $$RES_DIR -D $$RES_DIR"
 }
 
-//
-// Build app code.
-//
-android_app {
-    name: "StatixThemePicker",
+android_library {
+    name: "StatixThemePicker-core",
 
     static_libs: [
         "colorkt",
@@ -61,6 +58,27 @@ android_app {
         "SystemUIFlagsLib",
         "SystemUI-statsd",
         "styleprotoslite",
+    ],
+
+    optimize: {
+        enabled: false,
+    },
+
+    resource_dirs: ["res"],
+
+    resource_zips: [":WallpaperPicker2_res", ":ThemePicker_res"],
+
+    kotlincflags: ["-Xjvm-default=enable"],
+}
+
+//
+// Build app code.
+//
+android_app {
+    name: "StatixThemePicker",
+
+    static_libs: [
+        "StatixThemePicker-core",
     ],
 
     srcs: [
