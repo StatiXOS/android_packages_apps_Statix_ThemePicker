@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.statix.android.customization.model.iconpack;
+package com.statix.android.customization.model.font;
 
 import android.content.Context;
 import android.util.Log;
@@ -34,20 +34,20 @@ import com.android.wallpaper.R;
 import com.android.wallpaper.model.CustomizationSectionController;
 import com.android.wallpaper.util.LaunchUtils;
 
-import com.statix.android.customization.picker.iconpack.IconPackFragment;
-import com.statix.android.customization.picker.iconpack.IconPackSectionView;
+import com.statix.android.customization.picker.font.FontFragment;
+import com.statix.android.customization.picker.font.FontSectionView;
 
 import java.util.List;
 
-/** A {@link CustomizationSectionController} for system icons. */
+/** A {@link CustomizationSectionController} for system fonts. */
 
-public class IconPackSectionController implements CustomizationSectionController<IconPackSectionView> {
+public class FontSectionController implements CustomizationSectionController<FontSectionView> {
 
-    private static final String TAG = "IconPackSectionController";
+    private static final String TAG = "FontSectionController";
 
-    private final IconPackManager mIconPackOptionsManager;
+    private final FontManager mFontOptionsManager;
     private final CustomizationSectionNavigationController mSectionNavigationController;
-    private final Callback mApplyIconCallback = new Callback() {
+    private final Callback mApplyFontCallback = new Callback() {
         @Override
         public void onSuccess() {
         }
@@ -57,29 +57,29 @@ public class IconPackSectionController implements CustomizationSectionController
         }
     };
 
-    public IconPackSectionController(IconPackManager iconPackOptionsManager,
+    public FontSectionController(FontManager fontOptionsManager,
             CustomizationSectionNavigationController sectionNavigationController) {
-        mIconPackOptionsManager = iconPackOptionsManager;
+        mFontOptionsManager = fontOptionsManager;
         mSectionNavigationController = sectionNavigationController;
     }
 
     @Override
     public boolean isAvailable(Context context) {
-        return mIconPackOptionsManager.isAvailable();
+        return mFontOptionsManager.isAvailable();
     }
 
     @Override
-    public IconPackSectionView createView(Context context) {
-        IconPackSectionView iconPackSectionView = (IconPackSectionView) LayoutInflater.from(context)
-                .inflate(R.layout.icon_section_view, /* root= */ null);
+    public FontSectionView createView(Context context) {
+        FontSectionView fontSectionView = (FontSectionView) LayoutInflater.from(context)
+                .inflate(R.layout.font_section_view, /* root= */ null);
 
-        TextView sectionDescription = iconPackSectionView.findViewById(R.id.icon_section_description);
-        View sectionTile = iconPackSectionView.findViewById(R.id.icon_section_tile);
+        TextView sectionDescription = fontSectionView.findViewById(R.id.font_section_description);
+        View sectionTile = fontSectionView.findViewById(R.id.font_section_tile);
 
-        mIconPackOptionsManager.fetchOptions(new OptionsFetchedListener<IconPackOption>() {
+        mFontOptionsManager.fetchOptions(new OptionsFetchedListener<FontOption>() {
             @Override
-            public void onOptionsLoaded(List<IconPackOption> options) {
-                IconPackOption activeOption = getActiveOption(options);
+            public void onOptionsLoaded(List<FontOption> options) {
+                FontOption activeOption = getActiveOption(options);
                 sectionDescription.setText(activeOption.getTitle());
                 activeOption.bindThumbnailTile(sectionTile);
             }
@@ -87,22 +87,22 @@ public class IconPackSectionController implements CustomizationSectionController
             @Override
             public void onError(@Nullable Throwable throwable) {
                 if (throwable != null) {
-                    Log.e(TAG, "Error loading icon options", throwable);
+                    Log.e(TAG, "Error loading font options", throwable);
                 }
                 sectionDescription.setText(R.string.something_went_wrong);
                 sectionTile.setVisibility(View.GONE);
             }
         }, /* reload= */ true);
 
-        iconPackSectionView.setOnClickListener(v -> mSectionNavigationController.navigateTo(
-                IconPackFragment.newInstance(context.getString(R.string.icon_pack_title))));
+        fontSectionView.setOnClickListener(v -> mSectionNavigationController.navigateTo(
+                FontFragment.newInstance(context.getString(R.string.font_title))));
 
-        return iconPackSectionView;
+        return fontSectionView;
     }
 
-    private IconPackOption getActiveOption(List<IconPackOption> options) {
+    private FontOption getActiveOption(List<FontOption> options) {
         return options.stream()
-                .filter(option -> option.isActive(mIconPackOptionsManager))
+                .filter(option -> mFontOptionsManager.isActive(option))
                 .findAny()
                 // For development only, as there should always be a grid set.
                 .orElse(options.get(0));

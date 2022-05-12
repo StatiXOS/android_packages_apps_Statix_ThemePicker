@@ -22,6 +22,8 @@ import com.android.wallpaper.model.WorkspaceViewModel;
 import com.android.wallpaper.module.CustomizationSections;
 
 import com.statix.android.customization.model.color.ColorSectionController;
+import com.statix.android.customization.model.font.FontManager;
+import com.statix.android.customization.model.font.FontSectionController;
 import com.statix.android.customization.model.iconpack.IconPackManager;
 import com.statix.android.customization.model.iconpack.IconPackSectionController;
 
@@ -68,6 +70,9 @@ public final class StatixCustomizationSections implements CustomizationSections 
         sectionControllers.add(new IconPackSectionController(
                 IconPackManager.getInstance(activity, new OverlayManagerCompat(activity)), sectionNavigationController));
 
+        // Font selection section.
+        sectionControllers.add(new FontSectionController(
+                FontManager.getInstance(activity, new OverlayManagerCompat(activity)), sectionNavigationController));
         return sectionControllers;
     }
 }
