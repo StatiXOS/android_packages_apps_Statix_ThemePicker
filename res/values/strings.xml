@@ -16,7 +16,7 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- The name of this application, a theme picker. [CHAR LIMIT=50] -->
-    <string name="app_name">Styles</string>
+    <string name="app_name">Wallpaper & Style</string>
 
     <string name="icon_pack_title">System Icon Packs</string>
     <string name="icon_preview_card_content_description">Icon Preview</string>
