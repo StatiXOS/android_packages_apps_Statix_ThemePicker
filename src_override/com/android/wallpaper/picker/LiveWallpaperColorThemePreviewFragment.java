@@ -14,7 +14,7 @@ import com.android.wallpaper.widget.LockScreenPreviewer;
 import com.google.android.material.resources.MaterialAttributes;
 import com.google.android.material.tabs.TabLayout;
 
-import com.statix.android.customization.model.color.WallpaperColorResources;
+import com.android.customization.model.color.WallpaperColorResources;
 
 public class LiveWallpaperColorThemePreviewFragment extends LivePreviewFragment implements WallpaperColorThemePreview {
     private boolean mIgnoreInitialColorChange;
@@ -48,7 +48,7 @@ public class LiveWallpaperColorThemePreviewFragment extends LivePreviewFragment 
         } else if (!wallpaperColors.equals(mWallpaperColors) && shouldApplyWallpaperColors()) {
             mWallpaperColors = wallpaperColors;
             Context context = getContext();
-            RemoteViews.ColorResources.create(context, new WallpaperColorResources(wallpaperColors, context).getColorOverlay()).apply(context);
+            new WallpaperColorResources(wallpaperColors).apply(context);
             updateSystemBarColor(context);
             getView().setBackgroundColor(MaterialAttributes.resolveOrThrow(context, android.R.attr.colorPrimary, "android.R.attr.colorPrimary is not set in the current theme"));
             LayoutInflater from = LayoutInflater.from(context);
