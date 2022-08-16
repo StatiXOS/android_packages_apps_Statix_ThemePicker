@@ -51,7 +51,9 @@ android_library {
     name: "StatixThemePicker-core",
 
     static_libs: [
+        "guava",
         "monet",
+	"renderscript_toolkit",
         "wallpaper-common-deps",
         "SettingsLibSettingsTheme",
         "SystemUIFlagsLib",
@@ -86,6 +88,10 @@ android_app {
         ":StatixThemePicker_srcs",
         "src_override/**/*.java",
         "src_override/**/*.kt",
+    ],
+
+    jni_libs: [
+        "librenderscript-toolkit",
     ],
 
     use_embedded_native_libs: true,
