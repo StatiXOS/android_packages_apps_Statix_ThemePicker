@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 
+import com.android.customization.model.color.ColorSectionController;
 import com.android.customization.model.grid.GridOptionsManager;
 import com.android.customization.model.grid.GridSectionController;
 import com.android.customization.model.mode.DarkModeSectionController;
@@ -21,7 +22,6 @@ import com.android.wallpaper.model.WallpaperSectionController;
 import com.android.wallpaper.model.WorkspaceViewModel;
 import com.android.wallpaper.module.CustomizationSections;
 
-import com.statix.android.customization.model.color.ColorSectionController;
 import com.statix.android.customization.model.font.FontManager;
 import com.statix.android.customization.model.font.FontSectionController;
 import com.statix.android.customization.model.iconpack.IconPackManager;
@@ -51,7 +51,7 @@ public final class StatixCustomizationSections implements CustomizationSections 
         // Color section
         sectionControllers.add(
             new ColorSectionController(activity, wallpaperColorsViewModel, lifecycleOwner,
-                savedInstanceState, sectionNavigationController));
+                savedInstanceState));
 
         // Dark/Light theme section.
         sectionControllers.add(new DarkModeSectionController(activity,

@@ -51,9 +51,7 @@ android_library {
     name: "StatixThemePicker-core",
 
     static_libs: [
-        "colorkt",
         "monet",
-        "themelib",
         "wallpaper-common-deps",
         "SettingsLibSettingsTheme",
         "SystemUIFlagsLib",
