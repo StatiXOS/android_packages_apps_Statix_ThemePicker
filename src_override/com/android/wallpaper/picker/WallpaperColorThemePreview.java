@@ -15,7 +15,7 @@ import com.android.customization.model.themedicon.ThemedIconSwitchProvider;
 
 import com.google.android.material.resources.MaterialAttributes;
 
-import com.statix.android.customization.model.color.ColorUtils;
+import com.android.customization.model.color.ColorUtils;
 
 public interface WallpaperColorThemePreview {
 

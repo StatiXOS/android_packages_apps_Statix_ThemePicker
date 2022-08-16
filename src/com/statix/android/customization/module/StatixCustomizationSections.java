@@ -51,7 +51,7 @@ public final class StatixCustomizationSections implements CustomizationSections 
         // Color section
         sectionControllers.add(
             new ColorSectionController(activity, wallpaperColorsViewModel, lifecycleOwner,
-                savedInstanceState, sectionNavigationController));
+                savedInstanceState));
 
         // Dark/Light theme section.
         sectionControllers.add(new DarkModeSectionController(activity,
