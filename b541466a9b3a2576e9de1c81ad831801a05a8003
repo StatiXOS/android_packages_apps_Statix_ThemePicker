@@ -16,6 +16,24 @@
       "message": "shouldn\u0027t need lock_screen_preview",
       "revId": "b541466a9b3a2576e9de1c81ad831801a05a8003",
       "serverId": "039621b9-0c7c-40f3-867c-684f4bc911d6"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38998617_31f05eab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000125
+      },
+      "writtenOn": "2022-11-19T03:37:40Z",
+      "side": 1,
+      "message": "done :)",
+      "parentUuid": "2c3d185a_dc7da32a",
+      "revId": "b541466a9b3a2576e9de1c81ad831801a05a8003",
+      "serverId": "039621b9-0c7c-40f3-867c-684f4bc911d6"
     }
   ]
 }
