@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2814eb33_cbe7389f",
+        "filename": "res/layout/themed_icon_section_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2023-08-13T00:49:18Z",
+      "side": 0,
+      "message": "part of me wonders if we can just hide this in java",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "09e35346dc90a7fd58eade9107859d0d8e0494a1",
+      "serverId": "039621b9-0c7c-40f3-867c-684f4bc911d6"
+    }
+  ]
+}
