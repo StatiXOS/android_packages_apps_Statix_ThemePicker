@@ -9,7 +9,7 @@ import com.android.wallpaper.model.WallpaperInfo
 import com.android.wallpaper.module.CustomizationSections
 import com.android.wallpaper.picker.MonetPreviewFragment
 
-public class StatixCustomizationInjector : ThemePickerInjector() {
+class StatixCustomizationInjector : ThemePickerInjector() {
 
   private var customizationSections: CustomizationSections? = null
 
@@ -34,9 +34,7 @@ public class StatixCustomizationInjector : ThemePickerInjector() {
                 ),
                 getKeyguardQuickAffordancePickerInteractor(activity),
                 getKeyguardQuickAffordancePickerViewModelFactory(activity),
-                NotificationSectionViewModel.Factory(
-                    interactor = getNotificationsInteractor(activity),
-                ),
+                getNotificationSectionViewModelFactory(activity),
                 getFlags(),
                 getClockCarouselViewModelFactory(
                     getClockPickerInteractor(activity.applicationContext),
