@@ -162,6 +162,16 @@ public final class StatixCustomizationSections implements CustomizationSections 
                                 sectionNavigationController,
 				savedInstanceState == null),
                         /* reverseOrderWhenHorizontal= */ true));
+        // Icon pack selection section.
+        sectionControllers.add(
+                new IconPackSectionController(
+                        IconPackManager.getInstance(activity, new OverlayManagerCompat(activity)),
+                        sectionNavigationController));
+        // Font selection section.
+        sectionControllers.add(
+                new FontSectionController(
+                        FontManager.getInstance(activity, new OverlayManagerCompat(activity)),
+                        sectionNavigationController));
         switch (screen) {
             case LOCK_SCREEN:
                 // Lock screen quick affordances section.
@@ -201,17 +211,7 @@ public final class StatixCustomizationSections implements CustomizationSections 
                                 /* isRevampedUiEnabled= */ true));
                 break;
         }
-        // Icon pack selection section.
-        sectionControllers.add(
-                new IconPackSectionController(
-                        IconPackManager.getInstance(activity, new OverlayManagerCompat(activity)),
-                        sectionNavigationController));
 
-        // Font selection section.
-        sectionControllers.add(
-                new FontSectionController(
-                        FontManager.getInstance(activity, new OverlayManagerCompat(activity)),
-                        sectionNavigationController));
         return sectionControllers;
     }
 }
