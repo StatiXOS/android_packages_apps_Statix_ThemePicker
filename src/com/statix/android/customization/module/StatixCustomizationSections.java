@@ -199,19 +199,19 @@ public final class StatixCustomizationSections implements CustomizationSections 
                                 sectionNavigationController,
                                 lifecycleOwner,
                                 /* isRevampedUiEnabled= */ true));
+                // Icon pack selection section.
+                sectionControllers.add(
+                        new IconPackSectionController(
+                        IconPackManager.getInstance(activity, new OverlayManagerCompat(activity)),
+                                sectionNavigationController));
+                // Font selection section.
+                sectionControllers.add(
+                        new FontSectionController(
+                        FontManager.getInstance(activity, new OverlayManagerCompat(activity)),
+                                sectionNavigationController));
                 break;
         }
-        // Icon pack selection section.
-        sectionControllers.add(
-                new IconPackSectionController(
-                        IconPackManager.getInstance(activity, new OverlayManagerCompat(activity)),
-                        sectionNavigationController));
 
-        // Font selection section.
-        sectionControllers.add(
-                new FontSectionController(
-                        FontManager.getInstance(activity, new OverlayManagerCompat(activity)),
-                        sectionNavigationController));
         return sectionControllers;
     }
 }
