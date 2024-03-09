@@ -2,12 +2,11 @@ package com.statix.android.customization.module
 
 import android.content.Context
 import androidx.activity.ComponentActivity
-import androidx.fragment.app.Fragment
 import com.android.customization.module.ThemePickerInjector
 import com.android.customization.picker.notifications.ui.viewmodel.NotificationSectionViewModel
-import com.android.wallpaper.dispatchers.BackgroundDispatcher
-import com.android.wallpaper.dispatchers.MainDispatcher
 import com.android.wallpaper.module.CustomizationSections
+import com.android.wallpaper.picker.di.modules.BackgroundDispatcher
+import com.android.wallpaper.picker.di.modules.MainDispatcher
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
@@ -27,12 +26,12 @@ open class StatixCustomizationInjector @Inject constructor(
   private var customizationSections: CustomizationSections? = null
 
   override fun getCustomizationSections(activity: ComponentActivity): CustomizationSections {
-    val wallpaperColorsViewModel = getWallpaperColorsViewModel()
+    val wallpaperColorsRepository = getWallpaperColorsRepository()
     return customizationSections
         ?: StatixCustomizationSections(
                 getColorPickerViewModelFactory(
                     context = activity,
-                    wallpaperColorsViewModel = wallpaperColorsViewModel,
+                    wallpaperColorsRepository = wallpaperColorsRepository,
                 ),
                 getKeyguardQuickAffordancePickerInteractor(activity),
                 getKeyguardQuickAffordancePickerViewModelFactory(activity),
@@ -45,7 +44,7 @@ open class StatixCustomizationInjector @Inject constructor(
                 getDarkModeSnapshotRestorer(activity),
                 getThemedIconSnapshotRestorer(activity),
                 getThemedIconInteractor(),
-                getColorPickerInteractor(activity, wallpaperColorsViewModel),
+                getColorPickerInteractor(activity, wallpaperColorsRepository),
             )
             .also { customizationSections = it }
   }
